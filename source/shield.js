@@ -30,19 +30,22 @@ var Shield = function (ship) {
 		
 	};
 
+	this.setStatus = function (status) {
+		this.status = status;
+	}
+
 	this.hit = function () {
-		//return -1;
-		
 		if (this.isUp == true) {
 			this.level = this.level - 1;
-			
-			if (this.level == 0){
+
+			if (this.level == 0) {
 				this.status = false;
 			}
 		} else {
-			// to do - add damage to subsystem if less than zero
-			ship.subSystemsStatus["weapons"].status = "down";
+				var randomSystem = Math.floor((Math.random() * Object.keys(ship.subSystemsReport).length + 1)) - 1;
+				var systemHit = Object.keys(ship.subSystemsReport)[randomSystem];
+
+				ship.subSystemsReport[systemHit].damageReport += 1;
 		}
 	}
 }
-

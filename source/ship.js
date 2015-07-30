@@ -1,10 +1,11 @@
 var Ship = function (randUtilObj) {
-	var subSystemsStatus = [{
-		"weapons":{ "status": "up" },
-		"impulse":{ "status": "up" },
-		"warp":{ "status": "up" },
-		"life-support":{ "status": "up" },
-		"communications":{ "stauts": "up" }}];
+	var subSystems = {
+		"weapons":{ "damageReport": 0 },
+		"impulse":{ "damageReport": 0 },
+		"warp":{ "damageReport": 0 },
+		"life-support":{ "damageReport": 0 },
+		"communications":{ "damageReport": 0 }};
+		
 		var randUtil = randUtilObj;
 		
 		this.isAdjacentToBase = function(){
@@ -16,4 +17,5 @@ var Ship = function (randUtilObj) {
 			return rand < 5;
 		}
 
+		this.subSystemsReport = subSystems;
 };
